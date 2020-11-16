@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "644574740307",
+    "firebase_url": "https://si-kb-295509.firebaseio.com",
+    "project_id": "si-kb-295509",
+    "storage_bucket": "si-kb-295509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644574740307:android:895ac0efbcc55c19086ba6",
+        "android_client_info": {
+          "package_name": "com.stikom.si_kb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644574740307-jfsmjmt6msja770jjkfmm8cj25smshva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK2Nv82zjdfhq0J2wuhXe3dRBRye8secI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644574740307-jfsmjmt6msja770jjkfmm8cj25smshva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,78 @@
+<TableLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Masukan Tanggal dan Keterangan"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_ijo"
+            android:hint="22/10/2020"
+            android:padding="10dp" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtKeterangan"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_ijo"
+            android:hint="Keterangan"
+            android:padding="20dp" />
+    </TableRow>
+    <TableRow android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnsimpan"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btnijo"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+    </TableRow>
+    <TableRow android:gravity="center_horizontal">
+
+
+        <Button
+            android:id="@+id/btncancel"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnmerah"
+            android:text="Batal"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+    </TableRow>
+</TableLayout>

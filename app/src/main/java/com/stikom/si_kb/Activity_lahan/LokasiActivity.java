@@ -1,23 +1,28 @@
-package com.stikom.si_kb.Activity;
+package com.stikom.si_kb.Activity_lahan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
-import com.stikom.si_kb.LoginActivity;
+import com.stikom.si_kb.MainActivity;
 import com.stikom.si_kb.R;
 
 import org.json.JSONArray;
@@ -30,19 +35,32 @@ import java.util.HashMap;
 public class LokasiActivity extends AppCompatActivity {
 
     ListView lispiu;
-    JSONArray result;
+    JSONArray result,result2;
     private String JSON_STRING;
     private ProgressDialog loading;
     SimpleAdapter adapter;
-    ImageButton btnTmbhLokasi;
+    ImageButton btnback;
+    Button buttonTambah;
 
+    String JumlahTanaman="0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lokasi);
 
-        btnTmbhLokasi = (ImageButton) findViewById(R.id.btnTmbhLokasi);
-        btnTmbhLokasi.setOnClickListener(new View.OnClickListener() {
+
+        btnback = (ImageButton) findViewById(R.id.btnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( LokasiActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonTambah = (Button) findViewById(R.id.buttonTambah);
+        buttonTambah.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -54,6 +72,9 @@ public class LokasiActivity extends AppCompatActivity {
         lispiu = (ListView)findViewById(R.id.listview);
 
         getJSONLokasi();
+
+
+
     }
 
     private void showLokasi(){
@@ -74,6 +95,7 @@ public class LokasiActivity extends AppCompatActivity {
                 String  longitude = jo.getString(Config.KEY_LOKASI_longitude);
                 String  latitude = jo.getString(Config.KEY_LOKASI_latitude);
                 String  status = jo.getString(Config.KEY_LOKASI_status);
+                String  jumlah = jo.getString(Config.KEY_LOKASI_jumlah);
 
 
                 HashMap<String, String> employees = new HashMap<>();
@@ -84,6 +106,7 @@ public class LokasiActivity extends AppCompatActivity {
                 employees.put(Config.TAG_LOKASI_longitude, longitude);
                 employees.put(Config.TAG_LOKASI_latitude, latitude);
                 employees.put(Config.TAG_LOKASI_status, status);
+                employees.put(Config.TAG_LOKASI_jumlah, jumlah+ "");
 
                 list.add(employees);
             }
@@ -96,8 +119,8 @@ public class LokasiActivity extends AppCompatActivity {
 
         adapter = new SimpleAdapter(
                 LokasiActivity.this, list, R.layout.row_data_lokasi,
-                new String[]{Config.TAG_LOKASI_No, Config.TAG_LOKASI_nama_lokasi,Config.TAG_LOKASI_id_user,},
-                new int[]{R.id.txtNo,R.id.txtNama, R.id.txtJml});
+                new String[]{ Config.TAG_LOKASI_nama_lokasi,Config.TAG_LOKASI_jumlah,},
+                new int[]{R.id.txtNama, R.id.txtJml});
 
         lispiu.setAdapter(adapter);
         lispiu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -113,6 +136,33 @@ public class LokasiActivity extends AppCompatActivity {
 
                 Intent i =new Intent(getApplicationContext(),TanamankuActivity.class);
                 startActivity(i);
+            }
+        });
+
+        lispiu.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView parent, View view, int position, long id) {
+                HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
+                final String idlokasi=map.get(Config.TAG_LOKASI_id_lokasi);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LokasiActivity.this);
+                alertDialogBuilder.setTitle("Yakin Untuk Mengapus Lokasi?");
+                alertDialogBuilder
+                        .setMessage("Lokasi yang di hapus tidak dapat di kembalikan lagi!")
+                        .setCancelable(false)
+                        .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                HapusLokasi(idlokasi);
+                            }
+                        })
+                        .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                return true;
             }
         });
     }
@@ -140,11 +190,49 @@ public class LokasiActivity extends AppCompatActivity {
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
                 String  s = null;
-                s = rh.sendGetRequest(Config.LOKASI_URL+id_user);
+                s = rh.sendGetRequest(Config.LOKASI_URL+id_user+"&kategori=LAHAN");
                 return s;
             }
         }
         GetJSON gj = new GetJSON();
         gj.execute();
+    }
+
+    private void HapusLokasi(final String lokasi) {
+        class TambahData extends AsyncTask<Void, Void, String> {
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(LokasiActivity.this, "Proses Kirim Data...", "Wait...", false, false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+//                            Toast.makeText(MapsActivity.this,id_user+" "+nama_lokasi+" "+longt+" "+latt+" ",Toast.LENGTH_SHORT).show();
+                Intent i =new Intent(getApplicationContext(),LokasiActivity.class);
+                startActivity(i);
+                finish();
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+
+                HashMap<String, String> params = new HashMap<>();
+
+                params.put(Config.KEY_LOKASI_id_lokasi, lokasi);
+
+
+                RequestHandler rh = new RequestHandler();
+                String res = rh.sendPostRequest(Config.HAPUS_LOKASI_URL, params);
+                return res;
+            }
+        }
+        TambahData ae = new TambahData();
+        ae.execute();
+
     }
 }

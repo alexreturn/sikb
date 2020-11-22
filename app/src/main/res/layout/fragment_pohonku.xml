@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#05BA58"
         android:orientation="horizontal"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         <LinearLayout
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_weight=".6"
             android:orientation="vertical">
 
@@ -46,6 +46,14 @@
                 android:textStyle="bold"
                 android:text="Pohonku"
                 android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:text="Tanamanku Lahan dan PlanterBag" />
 
         </LinearLayout>
 
@@ -73,6 +81,13 @@
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:longClickable="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 </LinearLayout>

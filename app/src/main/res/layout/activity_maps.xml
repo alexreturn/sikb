@@ -82,7 +82,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:textColor="#fff"
-            android:background="@drawable/btnijo"
+            android:background="@drawable/btnijobulat"
             android:text="Simpan" />
 
 

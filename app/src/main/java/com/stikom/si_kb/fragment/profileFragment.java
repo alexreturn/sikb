@@ -3,7 +3,6 @@ package com.stikom.si_kb.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,20 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.stikom.si_kb.Activity.LokasiActivity;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.LoginActivity;
 import com.stikom.si_kb.Profile_activity.AboutActivity;
 import com.stikom.si_kb.Profile_activity.LihatProfileActivity;
 import com.stikom.si_kb.Profile_activity.gantiPassActivity;
 import com.stikom.si_kb.R;
-
-import org.w3c.dom.Text;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 

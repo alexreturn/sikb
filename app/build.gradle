@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
     //dll
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'

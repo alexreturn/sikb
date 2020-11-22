@@ -13,7 +13,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -25,26 +24,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.stikom.si_kb.Activity.DetailTanamanActivity;
-import com.stikom.si_kb.Activity.TanamankuActivity;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
-import com.stikom.si_kb.LoginActivity;
-import com.stikom.si_kb.MainActivity;
 import com.stikom.si_kb.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
-
-import static java.security.AccessController.getContext;
 
 public class LihatProfileActivity extends AppCompatActivity {
 
@@ -54,7 +46,7 @@ public class LihatProfileActivity extends AppCompatActivity {
     TextView txtUsername;
     EditText editNama,editAlamat,editNumber;
     Button btnEdit,btnKembali;
-    String USER_NAME;
+    String USERNAME_SHARED_PREF;
 
     String Status="EDIT";
     ImageView imageViewFoto;
@@ -69,14 +61,18 @@ public class LihatProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lihat_profile);
 
         sharedPreferences = LihatProfileActivity.this.getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        String USERNAME_SHARED_PREF = sharedPreferences.getString(Config.USERNAME_SHARED_PREF, "null");
+        USERNAME_SHARED_PREF = sharedPreferences.getString(Config.USERNAME_SHARED_PREF, "null");
         foto_store = sharedPreferences.getString(Config.foto_SHARED_PREF, "null");
 
         imageViewFoto=(ImageView)findViewById(R.id.imageViewFoto);
         Picasso.get().load(Config.URL+foto_store) .transform(new CropCircleTransformation()).into(imageViewFoto);
 
-        BitmapDrawable drawable = (BitmapDrawable) imageViewFoto.getDrawable();
-        storebitmap = drawable.getBitmap();
+        try {
+            BitmapDrawable drawable = (BitmapDrawable) imageViewFoto.getDrawable();
+            storebitmap = drawable.getBitmap();
+        }catch (Exception sdsd){
+
+        }
 
         imageViewFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,8 +112,9 @@ public class LihatProfileActivity extends AppCompatActivity {
                     editNumber.setEnabled(true);
                     Status="SIMPAN";
                     btnEdit.setText("SIMPAN");
+                    getUser();
                 }else{
-
+                    getUser();
                     btnEdit.setText("SUNTING PROFILE");
                     editNama.setEnabled(false);
                     editAlamat.setEnabled(false);
@@ -157,11 +154,16 @@ public class LihatProfileActivity extends AppCompatActivity {
                 foto = jo.getString("foto");
                 USERNAME_SIMPAN = jo.getString("username");
 
-                txtUsername.setText(USERNAME_SIMPAN);
-                editNama.setText(namas);
-                editAlamat.setText(alamat);
-                editNumber.setText(telp);
+
             }
+
+            editNama.setText(namas);
+            editAlamat.setText(alamat);
+            editNumber.setText(telp);
+
+            System.out.println("adsasdnama  "+ namas);
+            System.out.println("adsasdnama  "+alamat);
+            System.out.println("adsasdnama  "+telp);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(Config.nama_SHARED_PREF, namas);
             editor.putString(Config.telp_SHARED_PREF, telp);
@@ -177,7 +179,6 @@ public class LihatProfileActivity extends AppCompatActivity {
     }
 
     private void getUser(){
-        USER_NAME = sharedPreferences.getString(Config.USERNAME_SHARED_PREF, "null");
 
         class GetJSON extends AsyncTask<Void,Void,String> {
             @Override
@@ -195,7 +196,7 @@ public class LihatProfileActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(Config.USER_URL+USER_NAME);
+                String s = rh.sendGetRequest(Config.USER_URL+USERNAME_SHARED_PREF);
                 return s;
             }
         }

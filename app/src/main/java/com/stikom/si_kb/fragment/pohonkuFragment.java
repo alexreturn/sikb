@@ -18,15 +18,10 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.stikom.si_kb.Activity.DetailTanamanActivity;
-import com.stikom.si_kb.Activity.LokasiActivity;
-import com.stikom.si_kb.Activity.TanamankuActivity;
-import com.stikom.si_kb.Activity.tipsActivity;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
+import com.stikom.si_kb.Pohonku.DetailPohonkuActivity;
 import com.stikom.si_kb.R;
 
 import org.json.JSONArray;
@@ -74,7 +69,7 @@ public class pohonkuFragment extends Fragment {
                 String  nama = jo.getString(Config.KEY_TANAMANKU_nama);
                 String  tanggal_tanam = jo.getString(Config.KEY_TANAMANKU_tanggal_tanam);
                 String  panen = jo.getString(Config.KEY_TANAMANKU_panen);
-                String  jml_panen = jo.getString(Config.KEY_TANAMANKU_jml_panen);
+                String  jml_panen = jo.getString(Config.KEY_TANAMANKU_jumlah_panen);
                 String  status = jo.getString(Config.KEY_TANAMANKU_status);
                 String  keterangan = jo.getString(Config.KEY_TANAMANKU_keterangan);
                 String  timestamp = jo.getString(Config.KEY_TANAMANKU_timestamp);
@@ -88,7 +83,7 @@ public class pohonkuFragment extends Fragment {
                 employees.put(Config.TAG_TANAMANKU_nama, nama);
                 employees.put(Config.TAG_TANAMANKU_tanggal_tanam, tanggal_tanam);
                 employees.put(Config.TAG_TANAMANKU_panen, panen);
-                employees.put(Config.TAG_TANAMANKU_jml_panen, jml_panen);
+                employees.put(Config.TAG_TANAMANKU_jumlah_panen, jml_panen);
                 employees.put(Config.TAG_TANAMANKU_status, status);
                 employees.put(Config.TAG_TANAMANKU_keterangan, keterangan);
                 employees.put(Config.TAG_TANAMANKU_timestamp, timestamp);
@@ -112,15 +107,15 @@ public class pohonkuFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-//                String idTanaman=map.get(Config.TAG_TANAMANKU_id_tanaman);
-//
-//                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sharedPreferences.edit();
-//                editor.putString(Config.ID_TANAMAN_SIMPAN_TANAMAN, idTanaman);
-//                editor.commit();
-//
-//                Intent i =new Intent(getApplicationContext(), DetailTanamanActivity.class);
-//                startActivity(i);
+                String idTanaman=map.get(Config.TAG_TANAMANKU_id_tanaman);
+
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(Config.ID_TANAMAN_SIMPAN_TANAMAN, idTanaman);
+                editor.commit();
+
+                Intent i =new Intent(getActivity(), DetailPohonkuActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -128,7 +123,7 @@ public class pohonkuFragment extends Fragment {
 
     private void getJSONLokasi(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        final String id_lokasi = sharedPreferences.getString(Config.LOKASI_SIMPAN_LOKASI, "null");
+        final String id_User = sharedPreferences.getString(Config.id_user_SHARED_PREF, "null");
 
         class GetJSON extends AsyncTask<Void,Void,String> {
             @Override
@@ -148,7 +143,7 @@ public class pohonkuFragment extends Fragment {
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
                 String  s = null;
-                s = rh.sendGetRequest(Config.TANAMANKU_URL+id_lokasi);
+                s = rh.sendGetRequest(Config.TANAMANKU_URL+id_User);
                 return s;
             }
         }

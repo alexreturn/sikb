@@ -1,4 +1,4 @@
-package com.stikom.si_kb.Activity;
+package com.stikom.si_kb.Profile_activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

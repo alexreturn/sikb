@@ -1,14 +1,12 @@
-package com.stikom.si_kb.Activity;
+package com.stikom.si_kb.Activity_lahan;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -23,12 +21,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -41,7 +33,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
-import com.stikom.si_kb.MainActivity;
 import com.stikom.si_kb.R;
 
 import java.util.HashMap;
@@ -219,6 +210,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             params.put(Config.KEY_LOKASI_luas_lahan,luaslahan);
                             params.put(Config.KEY_LOKASI_longitude,longt+"");
                             params.put(Config.KEY_LOKASI_latitude,latt+"");
+                            params.put(Config.KEY_LOKASI_kategori,"LAHAN");
 
                            RequestHandler rh = new RequestHandler();
                             String res = rh.sendPostRequest(Config.LOKASI_SIMPAN_URL, params);

@@ -1,4 +1,4 @@
-package com.stikom.si_kb.Activity;
+package com.stikom.si_kb.Activity_lahan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,19 +27,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.ModelDataTanaman;
 import com.stikom.si_kb.Config.RequestHandler;
-import com.stikom.si_kb.Profile_activity.LihatProfileActivity;
 import com.stikom.si_kb.R;
 
 import org.json.JSONArray;
@@ -55,8 +50,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-
-import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class TambahTanamanActivity extends AppCompatActivity {
 
@@ -389,7 +382,7 @@ public class TambahTanamanActivity extends AppCompatActivity {
                     params.put(Config.TAG_TANAMANKU_nama, nama);
                     params.put(Config.TAG_TANAMANKU_tanggal_tanam, tanggal_tanam);
                     params.put(Config.TAG_TANAMANKU_panen, panen);
-                    params.put(Config.TAG_TANAMANKU_jml_panen, jml_panen);
+                    params.put(Config.TAG_TANAMANKU_jumlah_panen, jml_panen);
                     params.put(Config.TAG_TANAMANKU_keterangan, txtInputKeterangan.getText().toString());
                     if(bitmap==null){
                         params.put(Config.TAG_TANAMANKU_foto_tanaman, getStringImage(storebitmap));

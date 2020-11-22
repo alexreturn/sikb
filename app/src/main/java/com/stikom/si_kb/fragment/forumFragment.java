@@ -1,8 +1,6 @@
 package com.stikom.si_kb.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,13 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.stikom.si_kb.Activity.LokasiActivity;
-import com.stikom.si_kb.Activity.tipsActivity;
-import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.R;
 
 

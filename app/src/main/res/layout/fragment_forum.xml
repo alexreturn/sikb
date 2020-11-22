@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#05BA58"
         android:orientation="horizontal"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -55,119 +55,196 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/layWA"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnmerah"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:layout_weight=".3"
-                app:srcCompat="@drawable/whatsapp" />
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="1dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight=".7"
-                android:orientation="vertical">
+                android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#ffff"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:text="Whatsapp" />
+                    android:text="Cara Menghubungi Kami :"
+                    android:textColor="#000"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
-                    android:text="Hubungi Kami melalui aplikasi Whastapp" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Anda Mempunyau tiga saluran utama untuk Layanan Pengaduan aplikasi SI-KB : "
+                    android:textColor="#000" />
+
+                <LinearLayout
+                    android:id="@+id/layCall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btnijomuda"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="60dp"
+                        android:layout_weight=".3"
+                        app:srcCompat="@drawable/phone_call" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Call/SMS"
+                            android:textColor="#000"
+                            android:textSize="24dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hubungi Kami melalui SMS atau Saluran Telepon"
+                            android:textColor="#000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layWA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btnijomuda"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="60dp"
+                        android:layout_weight=".3"
+                        app:srcCompat="@drawable/whatsapp" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Whatsapp"
+                            android:textColor="#000"
+                            android:textSize="24dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hubungi Kami melalui aplikasi Whastapp"
+                            android:textColor="#000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layWEB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btnijomuda"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="60dp"
+                        android:layout_weight=".3"
+                        android:padding="3dp"
+                        app:srcCompat="@drawable/forum" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Forum Website"
+                            android:textColor="#000"
+                            android:textSize="24dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Dapatkan Info melalu website kami"
+                            android:textColor="#000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:text="Temukan Kami"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/facebook" />
+                        <ImageView
+                            android:id="@+id/imageView71"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/instagram" />
+                        <ImageView
+                            android:id="@+id/imageView72"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="10dp"
+                            app:srcCompat="@drawable/youtube" />
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/layCall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnmerah"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+        </ScrollView>
 
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:layout_weight=".3"
-                app:srcCompat="@drawable/phone_call" />
-
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".7"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#ffff"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:text="Call/SMS" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#fff"
-                    android:text="Hubungi Kami melalui SMS atau Saluran Telepon" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/layWEB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnmerah"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:layout_weight=".3"
-                android:padding="3dp"
-                app:srcCompat="@drawable/forum" />
-
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".7"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#ffff"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:text="Forum Website" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#fff"
-                    android:text="Dapatkan Info melalu website kami" />
-            </LinearLayout>
-        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

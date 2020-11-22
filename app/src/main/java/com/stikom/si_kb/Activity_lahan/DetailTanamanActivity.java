@@ -1,4 +1,4 @@
-package com.stikom.si_kb.Activity;
+package com.stikom.si_kb.Activity_lahan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,12 +11,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -116,7 +112,7 @@ public class DetailTanamanActivity extends AppCompatActivity {
                 String  nama = jo.getString(Config.KEY_TANAMANKU_nama);
                 String  tanggal_tanam = jo.getString(Config.KEY_TANAMANKU_tanggal_tanam);
                 String  panen = jo.getString(Config.KEY_TANAMANKU_panen);
-                String  jml_panen = jo.getString(Config.KEY_TANAMANKU_jml_panen);
+                String  jml_panen = jo.getString(Config.KEY_TANAMANKU_jumlah_panen);
                 String  status = jo.getString(Config.KEY_TANAMANKU_status);
                 String  keterangan = jo.getString(Config.KEY_TANAMANKU_keterangan);
                 String  timestamp = jo.getString(Config.KEY_TANAMANKU_timestamp);
@@ -132,7 +128,7 @@ public class DetailTanamanActivity extends AppCompatActivity {
                 employees.put(Config.TAG_TANAMANKU_nama, nama);
                 employees.put(Config.TAG_TANAMANKU_tanggal_tanam, tanggal_tanam);
                 employees.put(Config.TAG_TANAMANKU_panen, panen);
-                employees.put(Config.TAG_TANAMANKU_jml_panen, jml_panen);
+                employees.put(Config.TAG_TANAMANKU_jumlah_panen, jml_panen);
                 employees.put(Config.TAG_TANAMANKU_status, status);
                 employees.put(Config.TAG_TANAMANKU_keterangan, keterangan);
                 employees.put(Config.TAG_TANAMANKU_timestamp, timestamp);

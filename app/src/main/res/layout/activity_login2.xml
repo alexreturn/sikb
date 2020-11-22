@@ -26,7 +26,6 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="TODO"
-                app:srcCompat="@drawable/ic_baseline_account_circle_24"
                 tools:ignore="VectorDrawableCompat" />
         </LinearLayout>
 
@@ -63,7 +62,7 @@
             android:padding="10dp" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/txtLupaSandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lupa Kata Sandi?"
@@ -74,8 +73,9 @@
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="160dp"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btnijo"
+            android:background="@drawable/btnijobulat"
             android:text="Masuk"
             android:textColor="#fff" />
     </LinearLayout>

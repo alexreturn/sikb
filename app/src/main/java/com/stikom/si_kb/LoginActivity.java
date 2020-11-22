@@ -216,7 +216,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         GetJSON gj = new GetJSON();
         gj.execute();
     }
-
-
-
 }

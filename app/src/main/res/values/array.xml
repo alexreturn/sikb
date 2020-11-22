@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kegiatan">
+        <item>PEMBIBITAN</item>
+        <item>PEMUPUKAN</item>
+        <item>PENYIRAMAN</item>
+        <item>PANEN</item>
+        <item>LAINNYA</item>
+    </string-array>
+</resources>

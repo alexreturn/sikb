@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:password="true"
-                android:text="Name" />
+                android:hint="Sandi Lama" />
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:password="true"
-                android:text="Name" />
+                android:hint="Sandi Baru" />
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:password="true"
-                android:text="Name" />
+                android:hint="Ulang Sandi baru" />
         </LinearLayout>
 
         <Button
@@ -131,7 +131,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btnijo"
+            android:background="@drawable/btnijobulat"
             android:textColor="#fff"
             android:text="Ganti Sandi" />
 

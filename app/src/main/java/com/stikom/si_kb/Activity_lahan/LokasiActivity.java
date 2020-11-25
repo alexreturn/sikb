@@ -176,7 +176,7 @@ public class LokasiActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(LokasiActivity.this,"Fetching Data","Wait...",false,false);
+                loading = ProgressDialog.show(LokasiActivity.this,"Mengambil Data","Wait...",false,false);
             }
             @Override
             protected void onPostExecute(String s) {

@@ -3,23 +3,36 @@ package com.stikom.si_kb.Config;
 public class Config {
 //    public static final String URL = "http://192.168.18.31/ApiSIKB/";
     public static final String URL = "http://sikb.leakadev.xyz/ApiSIKB/";
+
     public static final String LOGIN_URL = URL+"login.php";
     public static final String USER_URL = URL+"getUser.php?username=";
     public static final String HOMEDETAIL_URL = URL+"getHomeDetail.php?id_user=";
-    public static final String EDIT_USER_URL = URL+"editProfile.php";
-    public static final String EDIT_PASS_URL = URL+"editPassword.php";
     public static final String LOKASI_URL = URL+"getLokasi.php?id_user=";
     public static final String TANAMAN_URL = URL+"getTanaman.php?id_lokasi=";
+    public static final String TANAMAN_PLANTER_URL = URL+"getTanamanPlanter.php?id_planter=";
     public static final String TANAMANKU_URL = URL+"getTanamanku.php?id_user=";
-    public static final String LOKASI_SIMPAN_URL = URL+"simpanKordinat.php";
-    public static final String TANAMAN_SIMPAN_URL = URL+"simpanTanaman.php";
     public static final String DETAIL_TANAMAN_URL = URL+"getDetailTanaman.php?id_tanaman=";
-    public static final String HAPUS_TANAMAN_URL = URL+"hapusTanaman.php?id_tanaman=";
-    public static final String HAPUS_LOKASI_URL = URL+"hapusLokasi.php?id_lokasi=";
     public static final String getLogTanaman = URL+"getLogTanaman.php?id_tanaman=";
-    public static final String simpanLogTanaman = URL+"simpanLogTanaman.php";
     public static final String TIPS_URL = URL+"getTips.php";
     public static final String DATA_TANAMAN = URL+"getDataTanaman.php";
+
+    public static final String LOKASI_PLANTER_URL = URL+"getLokasiPlanter.php?id_user=";
+
+    public static final String TambahPlanter = URL+"tambahPlanter.php";
+    public static final String TANAMAN_PLANTER_SIMPAN_URL = URL+"simpanTanamanPlanter.php";
+    public static final String simpanLogTanaman = URL+"simpanLogTanaman.php";
+    public static final String LOKASI_SIMPAN_URL = URL+"simpanKordinat.php";
+    public static final String TANAMAN_SIMPAN_URL = URL+"simpanTanaman.php";
+    public static final String LOKASI_PLANTER_SIMPAN_URL = URL+"simpanKordinatPlanter.php";
+
+
+    public static final String EDIT_USER_URL = URL+"editProfile.php";
+    public static final String EDIT_PASS_URL = URL+"editPassword.php";
+
+    public static final String HAPUS_TANAMAN_URL = URL+"hapusTanaman.php?id_tanaman=";
+    public static final String HAPUS_LOKASI_URL = URL+"hapusLokasi.php?id_lokasi=";
+    public static final String HAPUS_LOKASI_PLANTER_URL = URL+"hapusLokasiPlanter.php?id_planter=";
+
     //////////////////////////////Login/////////////////////////////////////////
 
     public static final String KEY_EMP_id_user= "id_user";
@@ -36,17 +49,21 @@ public class Config {
 
     //-----------------------LOKASI--------------------------------------------------------
 
+    public static final String KEY_LOKASI_id_planter= "id_planter";
     public static final String KEY_LOKASI_id_lokasi= "id_lokasi";
     public static final String KEY_LOKASI_id_user= "id_user";
     public static final String KEY_LOKASI_nama_lokasi= "nama_lokasi";
     public static final String KEY_LOKASI_luas_lahan= "luas_lahan";
+    public static final String KEY_LOKASI_ukuran_planter= "ukuran_planter";
     public static final String KEY_LOKASI_longitude= "longitude";
     public static final String KEY_LOKASI_latitude= "latitude";
     public static final String KEY_LOKASI_status= "status";
     public static final String KEY_LOKASI_kategori= "kategori";
     public static final String KEY_LOKASI_jumlah= "jumlah";
+    public static final String KEY_LOKASI_nama_planter= "nama_planter";
 
     public static final String TAG_LOKASI_No= "0";
+    public static final String TAG_LOKASI_id_planter= "id_planter";
     public static final String TAG_LOKASI_id_lokasi= "id_lokasi";
     public static final String TAG_LOKASI_id_user= "id_user";
     public static final String TAG_LOKASI_nama_lokasi= "nama_lokasi";
@@ -55,6 +72,7 @@ public class Config {
     public static final String TAG_LOKASI_latitude= "latitude";
     public static final String TAG_LOKASI_status= "status";
     public static final String TAG_LOKASI_jumlah= "jumlah";
+    public static final String TAG_LOKASI_jumlahPlanter= "jumlahPlanter";
 
     //-----------------------------TIPS ------------------------------------------------------
     public static final String TAG_TIPS_judul= "judul";
@@ -77,6 +95,7 @@ public class Config {
     public static final String KEY_TANAMANKU_foto_tanaman= "foto_tanaman";
     public static final String KEY_TANAMANKU_status_tanaman= "status_tanaman";
 
+    public static final String TAG_TANAMANKU_id_planter= "id_planter";
     public static final String TAG_TANAMANKU_id_tanaman= "id_tanaman";
     public static final String TAG_TANAMANKU_id_lokasi= "id_lokasi";
     public static final String TAG_TANAMANKU_id_user= "id_user";
@@ -91,6 +110,14 @@ public class Config {
     public static final String TAG_TANAMANKU_timestamp= "timestamp";
     public static final String TAG_TANAMANKU_foto_tanaman= "foto_tanaman";
     public static final String TAG_TANAMANKU_status_tanaman= "status_tanaman";
+
+
+    public static final String TAG_TANAMANKU_umur_tanaman= "umur_tanaman";
+    public static final String TAG_TANAMANKU_nama_lokasi= "nama_lokasi";
+    public static final String TAG_TANAMANKU_kategori_lokasi= "kategori_lokasi";
+    public static final String TAG_TANAMANKU_jumlahPanen= "jumlahPanen";
+
+
 
     //-----------------------------LOG TANAMAN -------------------------------------------
 
@@ -130,6 +157,7 @@ public class Config {
     public static final String TUTORIAL_SIMPAN = "true";
 
     public static final String LOKASI_SIMPAN_LOKASI="id_lokasi";
+    public static final String LOKASI_PLANTER_SIMPAN="id_planter";
     public static final String ID_TANAMAN_SIMPAN_TANAMAN="id_tanaman";
 
 

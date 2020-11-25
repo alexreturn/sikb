@@ -63,7 +63,7 @@ public class LokasiplanterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( LokasiplanterActivity.this, MapsActivity.class);
+                Intent intent = new Intent( LokasiplanterActivity.this, MapsPlanterActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,6 +92,7 @@ public class LokasiplanterActivity extends AppCompatActivity {
                 String  latitude = jo.getString(Config.KEY_LOKASI_latitude);
                 String  status = jo.getString(Config.KEY_LOKASI_status);
                 String  jumlah = jo.getString(Config.KEY_LOKASI_jumlah);
+                String  jumlahPlanter = jo.getString("jumlahPlanter");
 
 
                 HashMap<String, String> employees = new HashMap<>();
@@ -102,6 +103,7 @@ public class LokasiplanterActivity extends AppCompatActivity {
                 employees.put(Config.TAG_LOKASI_longitude, longitude);
                 employees.put(Config.TAG_LOKASI_latitude, latitude);
                 employees.put(Config.TAG_LOKASI_status, status);
+                employees.put(Config.TAG_LOKASI_jumlahPlanter, jumlahPlanter);
                 employees.put(Config.TAG_LOKASI_jumlah, jumlah+ "");
 
                 list.add(employees);
@@ -115,7 +117,7 @@ public class LokasiplanterActivity extends AppCompatActivity {
 
         adapter = new SimpleAdapter(
                 LokasiplanterActivity.this, list, R.layout.row_data_lokasi,
-                new String[]{ Config.TAG_LOKASI_nama_lokasi,Config.TAG_LOKASI_jumlah,},
+                new String[]{ Config.TAG_LOKASI_nama_lokasi,Config.TAG_LOKASI_jumlahPlanter,},
                 new int[]{R.id.txtNama, R.id.txtJml});
 
         lispiu.setAdapter(adapter);
@@ -130,7 +132,7 @@ public class LokasiplanterActivity extends AppCompatActivity {
 
                 editor.commit();
 
-                Intent i =new Intent(getApplicationContext(),TanamankuActivity.class);
+                Intent i =new Intent(getApplicationContext(),PlanterBagActivity.class);
                 startActivity(i);
             }
         });
@@ -209,7 +211,7 @@ public class LokasiplanterActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
 //                            Toast.makeText(MapsActivity.this,id_user+" "+nama_lokasi+" "+longt+" "+latt+" ",Toast.LENGTH_SHORT).show();
-                Intent i =new Intent(getApplicationContext(),LokasiActivity.class);
+                Intent i =new Intent(getApplicationContext(),LokasiplanterActivity.class);
                 startActivity(i);
                 finish();
             }

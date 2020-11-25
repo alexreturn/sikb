@@ -41,8 +41,12 @@ public class profileFragment extends Fragment {
         String foto = sharedPreferences.getString(Config.foto_SHARED_PREF, "null");
 
         imageView=(ImageView)view.findViewById(R.id.imageView);
-        Picasso.get().load(Config.URL+foto) .transform(new CropCircleTransformation()).into(imageView);
 
+        if(foto==null || foto.equals("")){
+
+        }else {
+            Picasso.get().load(Config.URL + foto).transform(new CropCircleTransformation()).into(imageView);
+        }
         textView=(TextView)view.findViewById(R.id.textView);
         textView.setText(nama);
 

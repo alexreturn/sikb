@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelDataTanaman {
-    private String id,nama,jenis,info,musim,Jml_planterbag,Waktu_panen,jml_panen,Timestamp;
+    private String id,nama,jenis,info,musim,Jml_planterbag,Waktu_panen,umur_tanaman,Timestamp,durasi_panen,estimasi_panen,estimasi_harga;
 
     public ModelDataTanaman() {
     }
     public ModelDataTanaman(String id, String nama, String jenis,
-                            String info, String musim, String Jml_planterbag, String Waktu_panen,String jml_panen, String Timestamp) {
+                            String info, String musim, String Jml_planterbag, String Waktu_panen,String umur_tanaman, String Timestamp,String durasi_panen,String estimasi_panen,String estimasi_harga) {
         this.id = id;
         this.nama = nama;
         this.jenis = jenis;
@@ -17,8 +17,12 @@ public class ModelDataTanaman {
         this.musim = musim;
         this.Jml_planterbag = Jml_planterbag;
         this.Waktu_panen = Waktu_panen;
-        this.jml_panen = jml_panen;
+        this.umur_tanaman = umur_tanaman;
         this.Timestamp = Timestamp;
+
+        this.durasi_panen=durasi_panen;
+        this.estimasi_panen=estimasi_panen;
+        this.estimasi_harga=estimasi_harga;
     }
 
     public String getId() {
@@ -69,14 +73,34 @@ public class ModelDataTanaman {
         this.Waktu_panen = Waktu_panen;
     }
 
-    public String getJml_panen() {
-        return jml_panen;
+    public String getumur_tanaman() {
+        return umur_tanaman;
     }
-    public void setJml_panen(String jml_panen) {
-        this.jml_panen = jml_panen;
+    public void setumur_tanaman(String umur_tanaman) {
+        this.umur_tanaman = umur_tanaman;
     }
 
 
+
+    public String getdurasi_panen() {
+        return durasi_panen;
+    }
+    public void setdurasi_panen(String durasi_panen) {
+        this.durasi_panen = durasi_panen;
+    }
+
+    public String getestimasi_panen() {
+        return estimasi_panen;
+    }
+    public void setestimasi_panen(String estimasi_panen) {
+        this.estimasi_panen = estimasi_panen;
+    }
+    public String getestimasi_harga() {
+        return estimasi_harga;
+    }
+    public void setestimasi_harga(String estimasi_harga) {
+        this.estimasi_harga = estimasi_harga;
+    }
 
     public String getTimestamp() {
         return Timestamp;

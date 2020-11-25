@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(USERNAME.equals("") || pass.equals("")  ) {
             Toast.makeText(LoginActivity.this, "NIM/Password tidak boleh kosong", Toast.LENGTH_LONG).show();
         }else{
-            loading = ProgressDialog.show(LoginActivity.this, "Check Data Login", "Wait...", false, false);
+            loading = ProgressDialog.show(LoginActivity.this, "Memeriksa Akun", "Tunggu Yah...", false, false);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.LOGIN_URL,
                     new Response.Listener<String>() {
                         @Override

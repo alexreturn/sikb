@@ -9,14 +9,26 @@
         android:layout_height="wrap_content"
         android:background="#05BA58"
         android:orientation="horizontal"
-        android:padding="20dp">
+        android:padding="10dp">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/btnback"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/backbtn" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight=".6"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -42,8 +54,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
+            android:layout_height="30dp"
             android:orientation="horizontal">
 
             <TextView
@@ -51,12 +62,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tanamanku : "
-                android:paddingTop="10dp"
                 android:textColor="#000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -64,7 +74,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="#000"
-                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
                     android:text="ini tanaman"/>
             </LinearLayout>
 
@@ -102,7 +113,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="Tanggal Tanam : "
                         android:textColor="#000"
                         android:textStyle="bold" />
@@ -111,7 +121,6 @@
                         android:id="@+id/txtTanggal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="waktu"
                         android:textColor="#000" />
                 </LinearLayout>
@@ -123,7 +132,25 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:text="Estimasi Panen : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtEstimasiPanen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimasi Panen"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Keterangan  : "
                         android:textColor="#000"
                         android:textStyle="bold" />
@@ -132,7 +159,6 @@
                         android:id="@+id/txtKeterangan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="keterangan"
                         android:textColor="#000" />
                 </LinearLayout>
@@ -144,7 +170,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="Waktu Panen : "
                         android:textColor="#000"
                         android:textStyle="bold" />
@@ -153,7 +178,6 @@
                         android:id="@+id/txtWaktu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="50 hari"
                         android:textColor="#000" />
                 </LinearLayout>
@@ -165,7 +189,63 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:text="Durasi Panen : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDurasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 Hari"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimasi Panen : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtestimasi_panen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 Gr/Panen"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimasi Harga : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtHarga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 /Kg"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Jumlah Panen : "
                         android:textColor="#000"
                         android:textStyle="bold" />
@@ -174,7 +254,6 @@
                         android:id="@+id/txtJml"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="1 kali"
                         android:textColor="#000" />
                 </LinearLayout>
@@ -209,37 +288,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonAktifitas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_weight=".8"
             android:background="@drawable/btnijobulat"
-            android:text="Aktivitas"
+            android:text="+ Aktivitas"
             android:textColor="#fff" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnKembali"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/btnmerah"
-                android:text="Kembali"
-                android:textColor="#fff" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

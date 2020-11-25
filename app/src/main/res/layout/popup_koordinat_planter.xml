@@ -1,0 +1,69 @@
+<TableLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="24dp"
+            android:text="Masukan Nama Lokasi"
+            android:gravity="center_horizontal" />
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:background="@drawable/border_ijo"
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:hint="Nama Lokasi"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"/>
+    <TableRow android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnsimpan"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btnijobulat"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+    </TableRow>
+    <TableRow android:gravity="center_horizontal">
+
+
+        <Button
+            android:id="@+id/btncancel"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnmerah"
+            android:text="Batal"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+    </TableRow>
+</TableLayout>

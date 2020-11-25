@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -63,7 +64,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     Button btnKembali,buttonAktifitas;
     String id_tanaman;
     ImageView imageView2,imageViewFotobesar;
-    TextView TxtnmTanaman,txtTanggal,txtKeterangan,txtWaktu,txtJml;
+    TextView TxtnmTanaman,txtTanggal,txtKeterangan,txtWaktu,txtJml,txtDurasi,txtestimasi_panen,txtHarga,txtEstimasiPanen;
     ListView listact;
 
     SimpleAdapter adapter;
@@ -75,7 +76,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     int PICK_IMAGE_REQUEST = 1;
     Bitmap bitmap;
-
+    ImageButton btnback;
     Button btnPanen ,btnPupuk, btnLain, btnTanamanmati;
     private Dialog customDialog,customDialog2;
     @Override
@@ -90,6 +91,10 @@ public class DetailPohonkuActivity extends AppCompatActivity {
         txtKeterangan=(TextView)findViewById(R.id.txtKeterangan);
         txtWaktu=(TextView)findViewById(R.id.txtWaktu);
         txtJml=(TextView)findViewById(R.id.txtJml);
+        txtDurasi=(TextView)findViewById(R.id.txtDurasi);
+        txtestimasi_panen=(TextView)findViewById(R.id.txtestimasi_panen);
+        txtHarga=(TextView)findViewById(R.id.txtHarga);
+        txtEstimasiPanen=(TextView)findViewById(R.id.txtEstimasiPanen);
 
         listact=(ListView) findViewById(R.id.listact);
 
@@ -104,12 +109,11 @@ public class DetailPohonkuActivity extends AppCompatActivity {
             }
         });
 
-        btnKembali=(Button) findViewById(R.id.btnKembali);
-        btnKembali.setOnClickListener(new View.OnClickListener() {
+        btnback=(ImageButton) findViewById(R.id.btnback);
+        btnback.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });
@@ -243,7 +247,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 if(fotonya.equals("")||fotonya==null ) {
                     Picasso.get().load(R.drawable.camera) .transform(new CropCircleTransformation()).into(imageViewFotobesar);
                 }else{
-                    Picasso.get().load(Config.URL+fotonya) .transform(new CropCircleTransformation()).into(imageViewFotobesar);
+                    Picasso.get().load(Config.URL+fotonya).into(imageViewFotobesar);
                 }
                 customDialog2.show();
             }
@@ -301,6 +305,11 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 String  foto_tanaman = jo.getString(Config.KEY_TANAMANKU_foto_tanaman);
                 String  status_tanaman = jo.getString(Config.KEY_TANAMANKU_status_tanaman);
 
+                String  waktu_panen = jo.getString("waktu_panen");
+                String  durasi_panen = jo.getString("durasi_panen");
+                String  estimasi_panen = jo.getString("estimasi_panen");
+                String  estimasi_harga = jo.getString("estimasi_harga");
+
                 HashMap<String, String> employees = new HashMap<>();
 
                 employees.put(Config.TAG_TANAMANKU_id_tanaman, id_tanaman);
@@ -322,8 +331,14 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 TxtnmTanaman.setText(nama);
                 txtTanggal.setText(tanggal_tanam);
                 txtKeterangan.setText(keterangan);
-                txtWaktu.setText(panen);
+                txtEstimasiPanen.setText(panen);
+                txtWaktu.setText(waktu_panen+" Hari");
                 txtJml.setText(jml_panen+" Kali");
+                txtDurasi.setText(durasi_panen+" Hari");
+                txtestimasi_panen.setText(estimasi_panen+" Gr/panen");
+                txtHarga.setText("Rp."+estimasi_harga+" Kg");
+
+
                 if(foto_tanaman.equals("")||foto_tanaman==null){
 
                 }else {
@@ -380,7 +395,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     }
     public String getStringImage(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // bmp = Bitmap.createScaledBitmap(bmp, 200, 200, true);
+//         bmp = Bitmap.createScaledBitmap(bmp, 200, 200, true);
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
 

@@ -60,8 +60,7 @@ public class DetailTanamanActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( DetailTanamanActivity.this, TanamankuActivity.class);
-                startActivity(intent);
+
                 finish();
             }
         });

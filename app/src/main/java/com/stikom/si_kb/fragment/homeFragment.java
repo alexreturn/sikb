@@ -24,6 +24,7 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.squareup.picasso.Picasso;
 import com.stikom.si_kb.Activity_lahan.LokasiActivity;
+import com.stikom.si_kb.Activity_planterbag.LokasiplanterActivity;
 import com.stikom.si_kb.Config.RequestHandler;
 import com.stikom.si_kb.LoginActivity;
 import com.stikom.si_kb.Profile_activity.tipsActivity;
@@ -73,8 +74,12 @@ public class homeFragment extends Fragment {
 
 
         imageView=(ImageView) view.findViewById(R.id.imageView);
-        Picasso.get().load(Config.URL+foto) .transform(new CropCircleTransformation()).into(imageView);
+        System.out.println("ini foto  "+foto);
+        if(foto==null || foto.equals("")){
 
+        }else {
+            Picasso.get().load(Config.URL + foto).transform(new CropCircleTransformation()).into(imageView);
+        }
         btnLahan=(ImageButton)view.findViewById(R.id.btnLahan);
         btnPlant=(ImageButton)view.findViewById(R.id.btnPlant);
         btnPanen=(ImageButton)view.findViewById(R.id.btnPanen);
@@ -93,7 +98,9 @@ public class homeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Belum Tersedia", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent( getContext(), LokasiplanterActivity.class);
+                startActivity(intent);
+//                Toast.makeText(getActivity(), "Belum Tersedia", Toast.LENGTH_LONG).show();
             }
         });
         btnPanen.setOnClickListener(new View.OnClickListener() {
@@ -273,7 +280,7 @@ public class homeFragment extends Fragment {
             txtPlanter.setText("Planter Bag : "+jumlahPlanter+" Bag");
             txtJmlTanaman.setText("Jumlah Tanaman : "+jumlahTanaman);
 
-            loading.dismiss();
+
 
             System.out.println("INI STATUS "+status_user);
             if(status_user.equals("0")||status_user== "0"){
@@ -295,8 +302,7 @@ public class homeFragment extends Fragment {
         }
     }
     private void getUser(){
-        loading = ProgressDialog.show(this.getActivity(), "Check Data Login", "Wait...", false, false);
-        class GetJSON extends AsyncTask<Void,Void,String> {
+       class GetJSON extends AsyncTask<Void,Void,String> {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();

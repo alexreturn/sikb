@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -52,14 +53,12 @@ import java.util.List;
 import java.util.Locale;
 
 public class TambahTanamanActivity extends AppCompatActivity {
-
-
     JSONArray result;
     private String JSON_STRING;
     private ProgressDialog loading;
     Spinner SpinTanaman;
     Button btnKembali,btnTambah;
-    TextView txtInfo,txtWaktu,txtJml;
+    TextView txtInfo,txtWaktu,txtJml,txtdurasi, txtestimasi,txtharga;
     private Dialog customDialog;
     ImageView imageView2;
     private EditText txtInputKeterangan;
@@ -77,6 +76,10 @@ public class TambahTanamanActivity extends AppCompatActivity {
     List<String> valueKeterangan = new ArrayList<String>();
     List<String> valueStatus = new ArrayList<String>();
     List<String> valueTimestamp = new ArrayList<String>();
+
+    List<String> valuedurasi_panen = new ArrayList<String>();
+    List<String> valueestimasi_panen = new ArrayList<String>();
+    List<String> valueestimasi_harga = new ArrayList<String>();
 
      String id_lokasi,id_user,id_pohon,nama,tanggal_tanam,panen,jml_panen,status,keterangan;
     private static final int CAMERA_REQUEST = 1888;
@@ -99,6 +102,7 @@ public class TambahTanamanActivity extends AppCompatActivity {
         BitmapDrawable drawable = (BitmapDrawable) imageView2.getDrawable();
         storebitmap = drawable.getBitmap();
         imageView2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
             @Override
             public void onClick(View view) {
                     if (TambahTanamanActivity.this.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -135,6 +139,9 @@ public class TambahTanamanActivity extends AppCompatActivity {
         txtInfo=(TextView) findViewById(R.id.txtInfo);
         txtWaktu=(TextView) findViewById(R.id.txtWaktu);
         txtJml=(TextView) findViewById(R.id.txtJml);
+        txtdurasi=(TextView) findViewById(R.id.txtdurasi);
+        txtestimasi=(TextView) findViewById(R.id.txtestimasi);
+        txtharga=(TextView) findViewById(R.id.txtharga);
 
         getJSONLokasi();
     }
@@ -227,10 +234,14 @@ public class TambahTanamanActivity extends AppCompatActivity {
                 modelTanaman.setMusim(jo.getString("musim"));
                 modelTanaman.setJml_planterbag(jo.getString("jml_planterbag"));
                 modelTanaman.setWaktu_panen(jo.getString("waktu_panen"));
-                modelTanaman.setJml_panen(jo.getString("jml_panen"));
+                modelTanaman.setumur_tanaman(jo.getString("umur_tanaman"));
 //                modelTanaman.setKeterangan(jo.getString("keterangan"));
 //                modelTanaman.setStatus(jo.getString("status"));
                 modelTanaman.setTimestamp(jo.getString("timestamp"));
+
+                modelTanaman.setdurasi_panen(jo.getString("durasi_panen"));
+                modelTanaman.setestimasi_panen(jo.getString("estimasi_panen"));
+                modelTanaman.setestimasi_harga(jo.getString("estimasi_harga"));
 
 
 //                String  id = jo.getString(Config.KEY_DATA_id);
@@ -262,8 +273,12 @@ public class TambahTanamanActivity extends AppCompatActivity {
                 valueMusim.add(listDataTanaman.get(i).getMusim());
                 valueJml_planterbag.add(listDataTanaman.get(i).getJml_planterbag());
                 valueWaktu_panen.add(listDataTanaman.get(i).getWaktu_panen());
-                valueJml_panen.add(listDataTanaman.get(i).getJml_panen());
+                valueJml_panen.add(listDataTanaman.get(i).getumur_tanaman());
                 valueTimestamp.add(listDataTanaman.get(i).getTimestamp());
+
+                valuedurasi_panen.add(listDataTanaman.get(i).getdurasi_panen());
+                valueestimasi_panen.add(listDataTanaman.get(i).getestimasi_panen());
+                valueestimasi_harga.add(listDataTanaman.get(i).getestimasi_harga());
 
             }
 
@@ -285,12 +300,19 @@ public class TambahTanamanActivity extends AppCompatActivity {
                     String Jml_panenTanaman = valueJml_panen.get(position);
                     String timestampTanaman = valueTimestamp.get(position);
 
+                    String durasipanen = valuedurasi_panen.get(position);
+                    String estimasipanen = valueestimasi_panen.get(position);
+                    String estimasiharga = valueestimasi_harga.get(position);
+
                     nama=namaTanaman;
                     id_pohon=idTanaman;
                     txtInfo.setText(infoTanaman);
                     txtWaktu.setText(waktuPanenTanaman+" Hari");
-                    txtJml.setText(Jml_panenTanaman+" Kali");
+                    txtJml.setText(Jml_panenTanaman+" Hari");
 
+                    txtdurasi.setText(durasipanen+" Hari");
+                    txtestimasi.setText(estimasipanen+" gr");
+                    txtharga.setText(estimasiharga+" /kg");
 
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                     Calendar c = Calendar.getInstance();
@@ -303,6 +325,7 @@ public class TambahTanamanActivity extends AppCompatActivity {
                     SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
                     String output = sdf1.format(c.getTime());
                     panen=output;
+
                     jml_panen=Jml_panenTanaman;
                 }
 

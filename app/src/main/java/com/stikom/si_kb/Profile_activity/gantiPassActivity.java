@@ -43,12 +43,20 @@ public class gantiPassActivity extends AppCompatActivity {
         editNewPass2=(EditText)findViewById(R.id.editNewPass2);
 
 
-        btnKembali=(Button)findViewById(R.id.btnKembali);
-        btnKembali.setOnClickListener(new View.OnClickListener() {
+        btnEdit=(Button)findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UpdateProfile();
 //                finish();
+            }
+        });
+        btnKembali=(Button)findViewById(R.id.btnKembali);
+        btnKembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                UpdateProfile();
+                finish();
             }
         });
 

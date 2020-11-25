@@ -222,19 +222,19 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView7"
+                            android:id="@+id/imageFB"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="10dp"
                             app:srcCompat="@drawable/facebook" />
                         <ImageView
-                            android:id="@+id/imageView71"
+                            android:id="@+id/imageIG"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="10dp"
                             app:srcCompat="@drawable/instagram" />
                         <ImageView
-                            android:id="@+id/imageView72"
+                            android:id="@+id/imageYT"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="10dp"

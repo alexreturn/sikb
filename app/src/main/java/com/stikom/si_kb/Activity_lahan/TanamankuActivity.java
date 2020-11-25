@@ -181,7 +181,7 @@ public class TanamankuActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(TanamankuActivity.this,"Fetching Data","Wait...",false,false);
+                loading = ProgressDialog.show(TanamankuActivity.this,"Mengambil Data","Wait...",false,false);
             }
             @Override
             protected void onPostExecute(String s) {

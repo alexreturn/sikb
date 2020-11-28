@@ -38,11 +38,11 @@
         android:layout_margin="10dp"
         android:background="#DAECDB"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="horizontal">
 
@@ -51,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tanamanku : "
-                android:paddingTop="10dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:textColor="#000" />
 
             <LinearLayout
@@ -64,7 +65,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="#000"
-                    android:padding="10dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
                     android:text="ini tanaman"/>
             </LinearLayout>
 
@@ -85,6 +87,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
                     map:srcCompat="@drawable/btnlahan" />
             </LinearLayout>
 
@@ -115,6 +118,7 @@
                         android:text="waktu"
                         android:textColor="#000" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -123,28 +127,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Keterangan  : "
-                        android:textColor="#000"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtKeterangan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="keterangan"
-                        android:textColor="#000" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="Waktu Panen : "
                         android:textColor="#000"
                         android:textStyle="bold" />
@@ -153,7 +135,6 @@
                         android:id="@+id/txtWaktu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="50 hari"
                         android:textColor="#000" />
                 </LinearLayout>
@@ -165,8 +146,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Jumlah Panen : "
+                        android:text="Keterangan  : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtKeterangan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="keterangan"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Umur Tanaman : "
                         android:textColor="#000"
                         android:textStyle="bold" />
 
@@ -174,11 +174,66 @@
                         android:id="@+id/txtJml"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="1 kali"
                         android:textColor="#000" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Waktu Panen : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtWaktu_panen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 kali"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimasi Panen : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtestimasi_panen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 gr"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimasi Harga : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtestimasi_harga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 /Kg"
+                        android:textColor="#000" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

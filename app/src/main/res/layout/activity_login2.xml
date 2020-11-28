@@ -61,14 +61,22 @@
             android:inputType="textPassword"
             android:padding="10dp" />
 
-        <TextView
-            android:id="@+id/txtLupaSandi"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lupa Kata Sandi?"
-            android:textAlignment="textEnd"
-            android:textColor="#000"
-            android:gravity="end" />
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtLupaSandi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Lupa Kata Sandi?"
+                android:textAlignment="textEnd"
+                android:textColor="#000" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonLogin"

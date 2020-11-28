@@ -145,15 +145,6 @@
                 android:text="+ Tambah Tanaman"
                 android:textColor="#fff" />
 
-            <Button
-                android:id="@+id/buttonInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight=".2"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/btnkuning"
-                android:textColor="#fff"
-                android:text="Info" />
-        </LinearLayout>
+           </LinearLayout>
     </LinearLayout>
 </LinearLayout>

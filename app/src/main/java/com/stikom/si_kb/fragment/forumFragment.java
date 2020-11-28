@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.stikom.si_kb.R;
 
@@ -47,8 +48,10 @@ public class forumFragment extends Fragment {
         });
         layWEB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-                startActivity(browserIntent);
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+//                startActivity(browserIntent);
+                    Toast.makeText(getActivity(), "Belum Tersedia", Toast.LENGTH_LONG).show();
+
             }
         });
 

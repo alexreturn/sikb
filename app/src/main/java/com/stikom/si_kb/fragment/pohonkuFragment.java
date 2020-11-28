@@ -24,6 +24,8 @@ import android.widget.SimpleAdapter;
 import com.squareup.picasso.Picasso;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
+import com.stikom.si_kb.LoginActivity;
+import com.stikom.si_kb.MainActivity;
 import com.stikom.si_kb.Pohonku.DetailPohonkuActivity;
 import com.stikom.si_kb.R;
 
@@ -54,7 +56,7 @@ public class pohonkuFragment extends Fragment {
 
         lispiu = (ListView)view.findViewById(R.id.listview);
 
-        getJSONLokasi();
+        getJSONDataTanamanku();
 
         return view;
     }
@@ -188,7 +190,7 @@ public class pohonkuFragment extends Fragment {
     }
 
 
-    private void getJSONLokasi(){
+    public void getJSONDataTanamanku(){
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         final String id_User = sharedPreferences.getString(Config.id_user_SHARED_PREF, "null");
 
@@ -196,12 +198,12 @@ public class pohonkuFragment extends Fragment {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(getActivity(),"Fetching Data","Wait...",false,false);
+//                loading = ProgressDialog.show(getActivity(),"Fetching Data","Wait...",false,false);
             }
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                loading.dismiss();
+//                loading.dismiss();
                 JSON_STRING = s;
                 showLokasi();
             }
@@ -216,5 +218,13 @@ public class pohonkuFragment extends Fragment {
         }
         GetJSON gj = new GetJSON();
         gj.execute();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        getJSONDataTanamanku();
+        System.out.println("LANJUTTTTTTTT");
+
     }
 }

@@ -41,7 +41,9 @@ import com.stikom.si_kb.Activity_lahan.TambahTanamanActivity;
 import com.stikom.si_kb.Activity_lahan.TanamankuActivity;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
+import com.stikom.si_kb.MainActivity;
 import com.stikom.si_kb.R;
+import com.stikom.si_kb.fragment.pohonkuFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +63,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     JSONArray result;
     private String JSON_STRING;
     private ProgressDialog loading;
-    Button btnKembali,buttonAktifitas;
+    Button btnKembali,buttonAktifitas,btnHapus;
     String id_tanaman;
     ImageView imageView2,imageViewFotobesar;
     TextView TxtnmTanaman,txtTanggal,txtKeterangan,txtWaktu,txtJml,txtDurasi,txtestimasi_panen,txtHarga,txtEstimasiPanen;
@@ -70,7 +72,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     SimpleAdapter adapter;
 
     ImageView klikfoto;
-    Spinner spinner;
+    Spinner spinner,spinnerHapus;
     Button buttonSimpan;
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -78,7 +80,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     Bitmap bitmap;
     ImageButton btnback;
     Button btnPanen ,btnPupuk, btnLain, btnTanamanmati;
-    private Dialog customDialog,customDialog2;
+    private Dialog customDialog,customDialog2,customDialogHapus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +111,16 @@ public class DetailPohonkuActivity extends AppCompatActivity {
             }
         });
 
+
+        btnHapus=(Button) findViewById(R.id.btnHapus);
+        btnHapus.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customDialogHapus.show();
+            }
+        });
+
         btnback=(ImageButton) findViewById(R.id.btnback);
         btnback.setOnClickListener(new View.OnClickListener() {
 
@@ -118,34 +130,29 @@ public class DetailPohonkuActivity extends AppCompatActivity {
             }
         });
 
-//        btnHapus=(Button) findViewById(R.id.btnTambah);
-//        btnHapus.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DetailPohonkuActivity.this);
-//                alertDialogBuilder.setTitle("Yakin Untuk Mengapus Tanaman??");
-//                alertDialogBuilder
-//                        .setMessage("Tanaman yang di hapus tidak dapat di kembalikan lagi!")
-//                        .setCancelable(false)
-//                        .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog,int id) {
-//                                HapusTanaman();
-//                            }
-//                        })
-//                        .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int id) {
-//                                dialog.cancel();
-//                            }
-//                        });
-//                AlertDialog alertDialog = alertDialogBuilder.create();
-//                alertDialog.show();
-//            }
-//        });
         getJSONLokasi();
         getJSONLog();
         initCustomDialog();
         initDialogFoto();
+        initDialogHapus();
+    }
+    private void initDialogHapus(){
+        customDialogHapus = new Dialog(DetailPohonkuActivity.this);
+        customDialogHapus.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        customDialogHapus.setContentView(R.layout.popup_hapus);
+        customDialogHapus.setCancelable(true);
+
+        spinnerHapus=customDialogHapus.findViewById(R.id.spinner);
+
+        buttonSimpan=customDialogHapus.findViewById(R.id.buttonSimpan);
+        buttonSimpan.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                HapusTanaman();
+            }
+        });
+
     }
 
     private void initCustomDialog(){
@@ -179,7 +186,6 @@ public class DetailPohonkuActivity extends AppCompatActivity {
             }
         });
     }
-
     private void initDialogFoto(){
         customDialog2 = new Dialog(DetailPohonkuActivity.this);
         customDialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -189,6 +195,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
         imageViewFotobesar = customDialog2.findViewById(R.id.imageViewFotobesar);
 
     }
+
     private void showLog(){
         JSONObject jsonObject = null;
         final ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
@@ -279,6 +286,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
         GetJSON gj = new GetJSON();
         gj.execute();
     }
+
     private void showDetail(){
         JSONObject jsonObject = null;
         ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
@@ -468,4 +476,71 @@ public class DetailPohonkuActivity extends AppCompatActivity {
         ae.execute();
 
     }
+
+    private void HapusTanaman() {
+        class TambahData extends AsyncTask<Void, Void, String> {
+            ProgressDialog loading;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(DetailPohonkuActivity.this, "Proses Data...", "Wait...", false, false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                HapusLogTanaman();
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String, String> params = new HashMap<>();
+                params.put(Config.TAG_TANAMANKU_id_tanaman, id_tanaman);
+                RequestHandler rh = new RequestHandler();
+                String res = rh.sendPostRequest(Config.HAPUS_TANAMAN_URL, params);
+                return res;
+            }
+        }
+        TambahData ae = new TambahData();
+        ae.execute();
+
+    }
+
+    private void HapusLogTanaman() {
+        class TambahData extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                 }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+//                Intent intent = new Intent( DetailPohonkuActivity.this, MainActivity.class);
+//                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+
+                HashMap<String, String> params = new HashMap<>();
+
+                params.put(Config.TAG_LOG_id_tanaman, id_tanaman);
+                params.put(Config.TAG_LOG_keterangan, spinnerHapus.getSelectedItem().toString());
+                params.put(Config.TAG_LOG_foto,"");
+
+
+                RequestHandler rh = new RequestHandler();
+                String res = rh.sendPostRequest(Config.simpanLogTanaman, params);
+                return res;
+            }
+        }
+        TambahData ae = new TambahData();
+        ae.execute();
+
+    }
+
 }

@@ -2,15 +2,23 @@ package com.stikom.si_kb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,6 +31,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.stikom.si_kb.Config.Config;
 import com.stikom.si_kb.Config.RequestHandler;
+import com.stikom.si_kb.Pohonku.DetailPohonkuActivity;
+import com.stikom.si_kb.Profile_activity.tipsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,13 +44,17 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button buttonLogin;
+    Button buttonLogin, btnTlp,btnWA;
     Boolean loggedIn= false;
     EditText txtUsername,txtPassword;
     private ProgressDialog loading;
     int success;
     private String JSON_STRING;
     String id_user,USERNAME_SIMPAN,nama,telp,alamat,longitude,latitude,foto;
+    TextView txtLupaSandi;
+
+    private Dialog customDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +64,49 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtUsername = (EditText) findViewById(R.id.txtusername);
         txtPassword = (EditText) findViewById(R.id.txtpassword);
 
+        txtLupaSandi=(TextView)findViewById(R.id.txtLupaSandi);
+        txtLupaSandi.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customDialog.show();
+            }
+        });
+
         buttonLogin=(Button)findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(this);
-    }
 
+
+        initCustomDialog();
+    }
+    private void initCustomDialog(){
+        customDialog = new Dialog(LoginActivity.this);
+        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        customDialog.setContentView(R.layout.popup_lupasandi);
+        customDialog.setCancelable(true);
+
+        btnWA=customDialog.findViewById(R.id.btnWA);
+        btnWA.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                String url = "https://api.whatsapp.com/send?phone=+6281339341632";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
+        btnTlp=customDialog.findViewById(R.id.btnTlp);
+        btnTlp.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "+6281339341632",null));
+                startActivity(intent);
+            }
+        });
+    }
     @Override
     protected void onResume(){
         super.onResume();

@@ -38,7 +38,7 @@ public class DetailTanamanActivity extends AppCompatActivity {
     Button btnKembali,btnHapus;
     String id_tanaman;
     ImageView imageView2;
-    TextView TxtnmTanaman,txtTanggal,txtKeterangan,txtWaktu,txtJml;
+    TextView TxtnmTanaman,txtTanggal,txtKeterangan,txtWaktu,txtJml,txtWaktu_panen,txtestimasi_panen,txtestimasi_harga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,9 @@ public class DetailTanamanActivity extends AppCompatActivity {
         txtKeterangan=(TextView)findViewById(R.id.txtKeterangan);
         txtWaktu=(TextView)findViewById(R.id.txtWaktu);
         txtJml=(TextView)findViewById(R.id.txtJml);
+        txtWaktu_panen=(TextView)findViewById(R.id.txtWaktu_panen);
+        txtestimasi_panen=(TextView)findViewById(R.id.txtestimasi_panen);
+        txtestimasi_harga=(TextView)findViewById(R.id.txtestimasi_harga);
 
         imageView2=(ImageView)findViewById(R.id.imageView2);
 
@@ -116,6 +119,10 @@ public class DetailTanamanActivity extends AppCompatActivity {
                 String  keterangan = jo.getString(Config.KEY_TANAMANKU_keterangan);
                 String  timestamp = jo.getString(Config.KEY_TANAMANKU_timestamp);
                 String  foto_tanaman = jo.getString(Config.KEY_TANAMANKU_foto_tanaman);
+                String  umur_tanaman = jo.getString("umur_tanaman");
+                String  Waktu_panen = jo.getString("waktu_panen");
+                String  estimasi_panen = jo.getString("estimasi_panen");
+                String  estimasi_harga = jo.getString("estimasi_harga");
                 String  status_tanaman = jo.getString(Config.KEY_TANAMANKU_status_tanaman);
 
                 HashMap<String, String> employees = new HashMap<>();
@@ -140,7 +147,12 @@ public class DetailTanamanActivity extends AppCompatActivity {
                 txtTanggal.setText(tanggal_tanam);
                 txtKeterangan.setText(keterangan);
                 txtWaktu.setText(panen);
-                txtJml.setText(jml_panen+" Kali");
+                txtJml.setText(umur_tanaman+" Hari");
+                txtWaktu_panen.setText(Waktu_panen+" Hari");
+                txtestimasi_panen.setText(estimasi_panen+" Gr");
+                txtestimasi_harga.setText(estimasi_harga+" /Kg");
+
+
                 if(foto_tanaman.equals("")||foto_tanaman==null){
 
                 }else {

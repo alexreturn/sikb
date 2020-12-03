@@ -11,6 +11,7 @@ public class Config {
     public static final String TANAMAN_URL = URL+"getTanaman.php?id_lokasi=";
     public static final String TANAMAN_PLANTER_URL = URL+"getTanamanPlanter.php?id_planter=";
     public static final String TANAMANKU_URL = URL+"getTanamanku.php?id_user=";
+    public static final String GETTANAMANKU_URL = URL+"getDataTanamanku.php.php?id_user=";
     public static final String DETAIL_TANAMAN_URL = URL+"getDetailTanaman.php?id_tanaman=";
     public static final String getLogTanaman = URL+"getLogTanaman.php?id_tanaman=";
     public static final String TIPS_URL = URL+"getTips.php";
@@ -124,6 +125,7 @@ public class Config {
     public static final String KEY_LOG_id_log= "id_log";
     public static final String KEY_LOG_id_tanaman= "id_tanaman";
     public static final String KEY_LOG_keterangan= "keterangan";
+    public static final String KEY_LOG_total_panen= "total_panen";
     public static final String KEY_LOG_foto= "foto";
     public static final String KEY_LOG_tanggal= "tanggal";
 
@@ -131,6 +133,7 @@ public class Config {
     public static final String TAG_LOG_id_log= "id_log";
     public static final String TAG_LOG_id_tanaman= "id_tanaman";
     public static final String TAG_LOG_keterangan= "keterangan";
+    public static final String TAG_LOG_total_panen= "total_panen";
     public static final String TAG_LOG_foto= "foto";
     public static final String TAG_LOG_tanggal= "tanggal";
 

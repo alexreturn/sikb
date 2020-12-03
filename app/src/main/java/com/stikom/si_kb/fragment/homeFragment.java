@@ -276,9 +276,9 @@ public class homeFragment extends Fragment {
 
 
 
-            txtLahan.setText("Lahanku : "+jumlahLahan+" Lahan");
-            txtPlanter.setText("Planter Bag : "+jumlahPlanter+" Bag");
-            txtJmlTanaman.setText("Jumlah Tanaman : "+jumlahTanaman);
+            txtLahan.setText(jumlahLahan);
+            txtPlanter.setText(jumlahPlanter);
+            txtJmlTanaman.setText(jumlahTanaman);
 
 
 

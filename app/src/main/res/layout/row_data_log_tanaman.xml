@@ -32,14 +32,34 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/textAktifitas"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:text="Aktifitas" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textAktifitas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Aktifitas"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/texttotpanen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:layout_marginRight="5dp"
+                    android:textSize="18dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="#000"
+                    android:gravity="end" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/txttgl"

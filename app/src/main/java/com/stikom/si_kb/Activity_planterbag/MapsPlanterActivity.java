@@ -206,13 +206,13 @@ public class MapsPlanterActivity  extends FragmentActivity implements OnMapReady
                     HashMap<String, String> params = new HashMap<>();
                     params.put(Config.KEY_LOKASI_id_user,id_user);
                     params.put(Config.KEY_LOKASI_nama_lokasi,nama_lokasi);
-//                    params.put(Config.KEY_LOKASI_ukuran_planter,ukuran);
+                    params.put(Config.KEY_LOKASI_ukuran_planter,"");
                     params.put(Config.KEY_LOKASI_longitude,longt+"");
                     params.put(Config.KEY_LOKASI_latitude,latt+"");
                     params.put(Config.KEY_LOKASI_kategori,"PLANTER");
 
                     RequestHandler rh = new RequestHandler();
-                    String res = rh.sendPostRequest(Config.LOKASI_PLANTER_SIMPAN_URL, params);
+                    String res = rh.sendPostRequest(Config.LOKASI_SIMPAN_URL, params);
                     return res;
                 }
             }

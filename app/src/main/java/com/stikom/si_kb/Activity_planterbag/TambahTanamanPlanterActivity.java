@@ -385,7 +385,7 @@ public class TambahTanamanPlanterActivity extends AppCompatActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
 //                            Toast.makeText(MapsActivity.this,id_user+" "+nama_lokasi+" "+longt+" "+latt+" ",Toast.LENGTH_SHORT).show();
-                Intent i =new Intent(getApplicationContext(), TambahTanamanPlanterActivity.class);
+                Intent i =new Intent(getApplicationContext(), TanamankuPlanterActivity.class);
                 startActivity(i);
                 finish();
             }

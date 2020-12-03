@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,12 +64,12 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     JSONArray result;
     private String JSON_STRING;
     private ProgressDialog loading;
-    Button btnKembali,buttonAktifitas,btnHapus;
+    Button btnKembali,buttonPanen,buttonAktifitas,btnHapus;
     String id_tanaman;
     ImageView imageView2,imageViewFotobesar;
     TextView TxtnmTanaman,txtTanggal,txtKeterangan,txtWaktu,txtJml,txtDurasi,txtestimasi_panen,txtHarga,txtEstimasiPanen;
     ListView listact;
-
+    EditText texthasilpanen;
     SimpleAdapter adapter;
 
     ImageView klikfoto;
@@ -80,7 +81,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
     Bitmap bitmap;
     ImageButton btnback;
     Button btnPanen ,btnPupuk, btnLain, btnTanamanmati;
-    private Dialog customDialog,customDialog2,customDialogHapus;
+    private Dialog customDialog,customDialog2,customDialogHapus,customPanen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +111,14 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 customDialog.show();
             }
         });
+        buttonPanen=(Button) findViewById(R.id.buttonPanen);
+        buttonPanen.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customPanen.show();
+            }
+        });
 
 
         btnHapus=(Button) findViewById(R.id.btnHapus);
@@ -135,7 +144,48 @@ public class DetailPohonkuActivity extends AppCompatActivity {
         initCustomDialog();
         initDialogFoto();
         initDialogHapus();
+        initDialogPanen();
     }
+    private void initDialogPanen(){
+        customPanen = new Dialog(DetailPohonkuActivity.this);
+        customPanen.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        customPanen.setContentView(R.layout.popup_panen);
+        customPanen.setCancelable(true);
+
+        texthasilpanen=customPanen.findViewById(R.id.texthasilpanen);
+
+
+        buttonSimpan=customPanen.findViewById(R.id.buttonSimpan);
+        buttonSimpan.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                if(texthasilpanen.getText().toString().equals("")||texthasilpanen.getText().toString().equals(null)){
+                    Toast.makeText(DetailPohonkuActivity.this, "Total Panen harap diisi", Toast.LENGTH_LONG).show();
+
+                }else {
+                    TambahLogPanenTanaman();
+                }
+            }
+        });
+
+        klikfoto=customPanen.findViewById(R.id.klikfoto);
+        klikfoto.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                if (DetailPohonkuActivity.this.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+                } else {
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                }
+            }
+        });
+
+    }
+
+
     private void initDialogHapus(){
         customDialogHapus = new Dialog(DetailPohonkuActivity.this);
         customDialogHapus.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -209,6 +259,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 String  id_log = jo.getString("id_log");
                 String  id_tanaman = jo.getString("id_tanaman");
                 String  keterangan = jo.getString("keterangan");
+                String  total_panen = jo.getString("total_panen");
                 String  foto = jo.getString("foto");
                 String  tanggal = jo.getString("tanggal");
 
@@ -217,6 +268,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 employees.put(Config.TAG_LOG_id_log, id_log);
                 employees.put(Config.TAG_LOG_id_tanaman, id_tanaman);
                 employees.put(Config.TAG_LOG_keterangan, keterangan);
+                employees.put(Config.TAG_LOG_total_panen, total_panen);
                 employees.put(Config.TAG_LOG_foto, foto);
                 employees.put(Config.TAG_LOG_tanggal, tanggal);
 
@@ -228,8 +280,8 @@ public class DetailPohonkuActivity extends AppCompatActivity {
 
         adapter = new SimpleAdapter(
                 DetailPohonkuActivity.this, list, R.layout.row_data_log_tanaman,
-                new String[]{ Config.TAG_LOG_keterangan,Config.TAG_LOG_tanggal,},
-                new int[]{R.id.textAktifitas, R.id.txttgl}){
+                new String[]{ Config.TAG_LOG_keterangan,Config.TAG_LOG_tanggal,Config.TAG_LOG_total_panen},
+                new int[]{R.id.textAktifitas, R.id.txttgl,R.id.texttotpanen}){
 
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -341,7 +393,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
                 txtKeterangan.setText(keterangan);
                 txtEstimasiPanen.setText(panen);
                 txtWaktu.setText(waktu_panen+" Hari");
-                txtJml.setText(jml_panen+" Kali");
+                txtJml.setText(jml_panen+" Hari");
                 txtDurasi.setText(durasi_panen+" Hari");
                 txtestimasi_panen.setText(estimasi_panen+" Gr/panen");
                 txtHarga.setText("Rp."+estimasi_harga+" Kg");
@@ -434,6 +486,48 @@ public class DetailPohonkuActivity extends AppCompatActivity {
         }
     }
 
+    private void TambahLogPanenTanaman() {
+        class TambahData extends AsyncTask<Void, Void, String> {
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(DetailPohonkuActivity.this, "Proses Kirim Data...", "Wait...", false, false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Intent i =new Intent(getApplicationContext(),DetailPohonkuActivity.class);
+                startActivity(i);
+                finish();
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+
+                HashMap<String, String> params = new HashMap<>();
+
+                params.put(Config.TAG_LOG_id_tanaman, id_tanaman);
+                params.put(Config.TAG_LOG_keterangan, "PANEN");
+                params.put(Config.TAG_LOG_total_panen, texthasilpanen.getText().toString());
+                if(bitmap==null){
+                    params.put(Config.TAG_LOG_foto,"");
+                }else{
+                    params.put(Config.TAG_LOG_foto, getStringImage(bitmap));
+                }
+
+                RequestHandler rh = new RequestHandler();
+                String res = rh.sendPostRequest(Config.simpanLogTanaman, params);
+                return res;
+            }
+        }
+        TambahData ae = new TambahData();
+        ae.execute();
+
+    }
     private void TambahLogTanaman() {
         class TambahData extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
@@ -461,6 +555,7 @@ public class DetailPohonkuActivity extends AppCompatActivity {
 
                 params.put(Config.TAG_LOG_id_tanaman, id_tanaman);
                 params.put(Config.TAG_LOG_keterangan, spinner.getSelectedItem().toString());
+                params.put(Config.TAG_LOG_total_panen, "");
                 if(bitmap==null){
                     params.put(Config.TAG_LOG_foto,"");
                 }else{

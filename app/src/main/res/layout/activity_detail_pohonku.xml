@@ -170,6 +170,25 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Umur Tanaman : "
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtJml"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 kali"
+                        android:textColor="#000" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Waktu Panen : "
                         android:textColor="#000"
                         android:textStyle="bold" />
@@ -238,25 +257,7 @@
                         android:text="1 /Kg"
                         android:textColor="#000" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jumlah Panen : "
-                        android:textColor="#000"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/txtJml"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1 kali"
-                        android:textColor="#000" />
-                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
@@ -290,21 +291,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
         <Button
             android:id="@+id/buttonAktifitas"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight=".8"
+            android:layout_weight="1"
+            android:background="@drawable/btnkuning"
+            android:text="Aktifitas"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/buttonPanen"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
             android:background="@drawable/btnijobulat"
-            android:text="+ Aktivitas"
+            android:text="Panen Tanaman"
             android:textColor="#fff" />
         <Button
             android:id="@+id/btnHapus"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight=".2"
+            android:layout_weight=".5"
             android:background="@drawable/btnmerah"
             android:text="Hapus"
             android:textColor="#fff" />
